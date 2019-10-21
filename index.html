@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<meta name="description" content="Exploration of network diagrams" />
+		<meta name="author" content="Little Sketches"/>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Roboto+Mono|Lora|Lato" rel="stylesheet">
+        <link href="css/style.css"  rel="stylesheet">
+    </head>		
+
+    <body>
+    	<!-- VISUALISATION CONTAINER -->
+    	<div id = "vis-container">
+    		<svg id = "vis">
+    			<!-- <g id = "idmc-elements">
+    				<rect id = "idmc-vert-border"  x = "0" y = "-20" width = "3" height="83" fill = "var(--color-main-dark)"></rect>
+    			</g> -->
+    		</svg>
+    	</div>
+
+    	<!-- DISPLAY CONTAINERS Instruction and description containers -->
+    	<div id = "display-container">
+
+	    	<!--Logo pane bottom right -->
+	    	<div id = "logo-container">
+				<img src ="img/idmc-logo.png"/>
+			</div>
+
+	    	<!--Menu button bottom right-->
+	    	<div id = "menu-button-container">
+				<svg id = "menu-system" class = "menu-icon" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 100 100" >
+					<title>Tap to view all system elements</title>
+    				<path d = "M54.5 5.05a11.3 11.3 0 0 0-11.3 11.3 11.3 11.3 0 0 0 7.109 10.484l-2.98 13.678a8.1 8.1 0 0 0-.929-.063 8.1 8.1 0 0 0-5.459 2.13l-3.787-3.419a6.3 6.3 0 0 0 1.147-3.61A6.3 6.3 0 0 0 32 29.25a6.3 6.3 0 0 0-6.3 6.3 6.3 6.3 0 0 0 6.3 6.3 6.3 6.3 0 0 0 4.082-1.502l3.791 3.42a8.1 8.1 0 0 0-1.572 4.783 8.1 8.1 0 0 0 .582 3.008l-8.727 4.87a12.8 12.8 0 0 0-12.355-9.48A12.8 12.8 0 0 0 5 59.75a12.8 12.8 0 0 0 12.8 12.8 12.8 12.8 0 0 0 12.8-12.8 12.8 12.8 0 0 0-.123-1.666l9.144-5.105a8.1 8.1 0 0 0 6.78 3.671 8.1 8.1 0 0 0 5.445-2.115l14.79 14.272A16 16 0 0 0 63 78.949a16 16 0 0 0 16 16 16 16 0 0 0 16-16 16 16 0 0 0-16-16 16 16 0 0 0-5.27.912l-5.35-13.566 8.765.355a4.8 4.8 0 0 0 4.755 4.2 4.8 4.8 0 0 0 4.8-4.8 4.8 4.8 0 0 0-4.8-4.8 4.8 4.8 0 0 0-4.693 3.803l-9.467-.385-8.674-21.998a11.3 11.3 0 0 0 6.735-10.32A11.3 11.3 0 0 0 54.5 5.05zm3.064 22.175l8.428 21.373-11.513-.467a8.1 8.1 0 0 0-5.588-7.28l2.949-13.533a11.3 11.3 0 0 0 2.66.332 11.3 11.3 0 0 0 3.064-.425zm-3.158 22.504l12.227.496 5.615 14.24a16 16 0 0 0-4.535 3.158L52.918 53.346a8.1 8.1 0 0 0 1.488-3.617z"/>
+				</svg>
+				<svg id = "menu-loops" class = "menu-icon" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 100 100">
+					<title>Tap to view feedback loops</title>					
+					<path d = "M50 11.977c-1.416-.006-2.808.03-4.224.185a37.373 37.373 0 0 0-11.016 2.937c-.026.012-.064-.011-.09 0-13.948 6.013-22.858 19.928-22.858 34.883H3l13.219 17.625 13.218-17.625h-8.812c0-11.456 6.941-22.225 17.625-26.805 10.93-4.829 24.002-2.253 32.404 6.152l6.242-6.243C69.687 15.878 59.902 12.021 50 11.98zm33.781 20.38L70.562 49.982h8.813c0 11.456-6.941 22.225-17.625 26.805-10.93 4.829-24.002 2.253-32.404-6.151l-6.242 6.242c10.963 10.963 27.821 14.27 42.136 7.987.023-.012.067.012.09 0 13.948-6.013 22.858-19.928 22.858-34.883H97L83.781 32.357z"/>
+				</svg>
+				<svg id = "menu-scenarios" class = "menu-icon" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 100 100">
+					<title>Tap to view system scenarios</title>					
+					<path d="M90.417 48.155c-4.68-4.681-11.141-7.58-18.262-7.579-7.121 0-13.59 2.898-18.268 7.576l-.684.684 4.24 4.244.687-.686c3.596-3.595 8.55-5.818 14.025-5.818C83.105 46.576 92 55.468 92 66.419c0 5.476-2.226 10.43-5.821 14.025-3.594 3.594-8.549 5.82-14.024 5.82-9.784 0-17.846-7.138-19.468-16.46h7.299l-5.155-8.931-5.154-8.931-5.159 8.932-5.159 8.93 7.247.001C48.28 82.45 59.068 92.264 72.155 92.264c7.122 0 13.588-2.9 18.265-7.579C95.098 80.007 98 73.541 98 66.418c0-7.12-2.902-13.583-7.583-18.263zM45.251 14.499c-4.597-4.198-10.71-6.763-17.407-6.763-7.122 0-13.587 2.896-18.264 7.575C4.9 19.989 2 26.458 2 33.58c0 14.241 11.604 25.845 25.845 25.844 7.122 0 13.589-2.902 18.267-7.58l.685-.685-4.24-4.241-.687.685c-3.596 3.596-8.55 5.819-14.025 5.819C16.895 53.423 8 44.53 8 33.58c0-5.476 2.226-10.43 5.821-14.025 3.594-3.594 8.547-5.818 14.023-5.819 9.783 0 17.846 7.136 19.469 16.456l-7.299.003 5.154 8.93 5.155 8.93 5.159-8.93 5.159-8.933h-7.248c-.818-6.173-3.758-11.688-8.142-15.693z" />
+				</svg>
+				<svg id = "menu-controls" class = "menu-icon" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 100 100">
+					<title>Tap to view system view controls</title>						
+				      <path d = "M92 47H70.574c-1.342-5.16-6-9-11.574-9-5.575 0-10.232 3.84-11.574 9H8a3 3 0 0 0 0 6h39.426c1.342 5.16 6 9 11.574 9 5.575 0 10.232-3.84 11.574-9H92a3 3 0 0 0 0-6zm-33 9c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/>
+				      <path d = "M92 77H52.574c-1.342-5.16-6-9-11.574-9-5.575 0-10.232 3.84-11.574 9H8a3 3 0 0 0 0 6h21.426c1.342 5.16 6 9 11.574 9 5.575 0 10.232-3.84 11.574-9H92a3 3 0 0 0 0-6zm-51 9c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/>
+				      <path d = "M8 23h21.426c1.342 5.16 6 9 11.574 9 5.575 0 10.232-3.84 11.574-9H92a3 3 0 0 0 0-6H52.574c-1.342-5.16-6-9-11.574-9-5.575 0-10.232 3.84-11.574 9H8a3 3 0 0 0 0 6zm33-9c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"/>
+				</svg>
+			</div>
+			<div id = "menu-toggle-container" class = "hidden" title = "Tap to open the System views menu">
+				<svg id = "menu-toggle" class = "menu-icon" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 100 100"  >
+				  	<path class = "menu-button" d = "M50 5C25.188 4.999 5 25.186 5 49.998 5 74.811 25.187 95 50 95c24.813 0 45-20.189 45-45.002C95 25.185 74.812 5 50 5zm0 21.334l27.232 27.233a2.85 2.85 0 0 1 0 4.019l-8.04 8.037a2.85 2.85 0 0 1-4.02 0L50.002 50.45 34.826 65.623a2.85 2.85 0 0 1-4.02 0l-8.039-8.037a2.852 2.852 0 0 1 0-4.019L50 26.334z"/>
+				</svg>
+			</div>
+
+			<!-- Menus for different view modes: bottom right -->
+			<div id = "controlsMenu-container" class = "menu-container hidden">
+				<p id = "controlsMenu-header" class = "menu-header">View controls</p>			
+				Node opacity
+				<div class="slider-container">
+				  	<input type="range" min="0" max="100" value="100" class="slider" id="sliderNodeOpacity">
+				</div>
+				Link opacity
+				<div class="slider-container">
+				  	<input type="range" min="0" max="100" value="100" class="slider" id="sliderLinkOpacity">
+				</div>
+				Link tension			
+				<div class="slider-container">
+				  	<input type="range" min="-100" max="100" value="30" class="slider" id="sliderLinkTension">
+				</div>
+				<div class = 'radio-container'>
+				Layout:<br>				
+				    <label id = "selector-systemView" >
+				        <input id="input-viewReset" class = "viewSelector" type="radio" name="grouping" value="reset" checked>
+				        System
+				    </label>
+				    <br>
+				    <label id = "selector-clusterView">
+				        <input id="input-viewCluster" class = "viewSelector" type="radio" name="grouping" value="cluster">
+				        Cluster
+				    </label>
+				    <br>
+				    <label id = "selector-clusterView">
+				        <input id="input-viewUncluster" class = "viewSelector" type="radio" name="grouping" value="uncluster">
+				        Uncluster
+				    </label>
+
+				    <br>
+				    <label id = "selector-radialView">
+				        <input id="input-viewRadial" class = "viewSelector" type="radio" name="grouping" value="radial">
+				        Radial
+				    </label>
+				</div>
+			</div>
+			<div id = "loopMenu-container" class = "menu-container hidden">
+				<p id = "loopMenu-header" class = "menu-header">System Loops</p>
+				<ul id = "loopMenu-list-container" class = "menu-listContainer"></ul>
+			</div>
+			<div id = "scenarioMenu-container" class = "menu-container hidden">
+				<p id = "scenarioMenu-header" class = "menu-header">The interaction of system loops</p>
+				<ul id = "scenarioMenu-list-container" class = "menu-listContainer"></ul>
+			</div>
+
+    		<!--Instruction pane top right -->
+	    	<div id = "instruction-container">
+	    		<div id = "instruction-icon">
+					<svg id = "instruction-svg" class = "svg-content-responsive" width = "100%"  viewBox = "80 20 50 50">  
+					 	<defs>
+	                        <clipPath id="tap-clip">
+	                            <path d="M99.788 30.231v5.792h-4.759V22.22h14.167v13.768h-5.412l.051-5.837c-1.053-1.451-3.044-.999-4.047.081z"/>
+	                        </clipPath>	
+					 	</defs>
+						<g id = "instruction-hand-group">
+		                    <circle id="instruction-circle-tap" cx="101.944" cy="29.131" r="6" clip-path="url(#tap-clip)"/>
+		                    <path id="instruction-hand" d="M114.518 41.294c-.16 0-.567.055-.985.185a2.76 2.76 0 0 0-2.748-2.547c-.661 0-1.269.234-1.744.624a2.761 2.761 0 0 0-2.587-1.805c-.69 0-1.398.21-1.968.619v-7.116c0-1.766-1.032-2.952-2.568-2.952-1.543 0-2.662 1.241-2.662 2.954l.037 16.63-2.267-2.38a3.195 3.195 0 0 0-2.273-.947c-.855 0-1.663.336-2.272.947-1.262 1.26-1.265 3.31-.029 4.545a146.8 146.8 0 0 0 5.005 5.244l.477.478c2.779 2.794 5.178 5.207 9.98 5.207 4.973 0 6.636-2.495 7.914-5.051 1.23-2.459 1.244-11.873 1.244-12.272-.001-1.26-1.194-2.363-2.554-2.363zm.253 14.106c-1.203 2.407-2.55 4.399-6.857 4.399-4.311 0-6.444-2.144-9.143-4.859l-.48-.48c-2.906-2.906-4.94-5.174-4.982-5.22a2.03 2.03 0 0 1-.598-1.449 2.044 2.044 0 0 1 .604-1.45 2.021 2.021 0 0 1 2.864-.01l3.28 3.441a.59.59 0 0 0 1.018-.409l-.04-18.11c0-.817.387-1.771 1.48-1.771 1.288 0 1.387 1.356 1.387 1.771v11.024a.59.59 0 0 0 1.181 0v-1.574c0-1.3 1.178-1.772 1.969-1.772.868 0 1.575.706 1.575 1.575v2.165a.59.59 0 0 0 1.181 0v-.984c0-.869.706-1.575 1.575-1.575.868 0 1.575.706 1.575 1.575v2.559a.59.59 0 0 0 1.18 0v-1.504c.237-.115.7-.268.978-.268.705 0 1.371.574 1.371 1.181 0 2.646-.2 9.91-1.118 11.745z"/>
+		                </g>    			
+		           	</svg>
+	    		</div>	    		
+	    		<div id = "instruction-textBox">
+	    			<!-- <div id = "instruction-wedge"></div> -->
+	    			<div id = "instruction-header-container">
+			    		<p id = "instruction-header"></p>
+	    			</div>
+	    			<div id = "instruction-text-container">
+		    			<p id = "instruction-text"></p>
+	    			</div>
+	    		</div>	
+	    	</div>    	
+	    	<!-- Description pane bottom let -->
+			<div id = "systemDescription-container">
+	    		<div id = "systemDescription-wedge"></div>
+	    		<p id = "systemDescription-header"></p>
+	    		<p id = "systemDescription-text"></p>
+			</div>	
+    	</div>
+
+    	<!-- LOADING ANIMATION CONTAINER -->
+    	<div id = "intro-container">
+			<div class="spinner">
+			  <div class="dot1"></div>
+			  <div class="dot2"></div>
+			</div>
+    	</div>
+
+		<!-- JAVASCRIPT DEPENDENCIES -->
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.2/tabletop.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsnetworkx/0.3.4/jsnetworkx.js"></script>
+		<script> // Visualisation specific dataset/link to Google Sheet template
+			const dataURL =  'https://docs.google.com/spreadsheets/d/1-48fEuMeohsTod1-c6Gu1vgouNivyzocDhrlBrbDRcQ/',	// Visualisiton specific dataset/link to Google Sheet template
+				  elementSelector = 'svg#vis',																			// Selector of HTML element to render visualisation to
+				  applyUserSettings = true																				// Use Google sheet 'settings' if true, and default settings if false
+		</script>
+		<script src="js/main.js"> //Path to main sloopsys.js library</script>																			
+    </body>
+</html>
