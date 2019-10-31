@@ -1327,7 +1327,7 @@
     				'instructionText': 			'Tap on any "element" (circle) to learn about it',	
     				'descriptionHeader': 		'About',
     				'descriptionText': 			'[Description loaded from system element from database]',					
-    				'showInstructionDuration': 	5000,				// Duration in ms that pane is shown on screen. 
+    				'showInstructionDuration': 	'infinite',				// Duration in ms that pane is shown on screen. 
     				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
     			},
     			'nodeUnhighlight': {								// Mouseout event (used to reset nodes)
@@ -1335,21 +1335,21 @@
     				'instructionText': 			'Tap on any "element" (circle) to learn about it',	
     				'descriptionHeader': 		'',
     				'descriptionText': 			'',
-    				'showInstructionDuration':  5000,				// Duration in ms that pane is shown on screen. 
-    				'showDescriptionDuration': 	0					// 0 indicates that pane is not shown, 'infinite' === sticky
+    				'showInstructionDuration':  'infinite',				// Duration in ms that pane is shown on screen. 
+    				'showDescriptionDuration': 	'infinite'					// 0 indicates that pane is not shown, 'infinite' === sticky
     			},					
     			'nodeShowDescription': {
     				'instructionHeader': 		'Explore an element',
     				'instructionText': 			'Tap on any "element" (circle) to learn about it',	// Descriptions are for the previous event
     				'descriptionHeader': 		'About',
     				'descriptionText': 			'[Description loaded from system element from database]',								
-    				'showInstructionDuration': 	5000,				// Duration in ms that pane is shown on screen. 
-    				'showDescriptionDuration': 	8000			// 0 indicates that pane is not shown, 'infinite' === sticky	
+    				'showInstructionDuration': 	'infinite',				// Duration in ms that pane is shown on screen. 
+    				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
     			},
     			'nodeShowSystemImpacts': {									// The +/- buttons on the selected node
     				'instructionHeader': 		'Explore consequences',
     				'instructionText': 			"Tap the + and - buttons to see how increases / decreases in this variable affect the other connected variables",
-    				'descriptionHeader': 		'System consequences',
+    				'descriptionHeader': 		'ABOUT',
     				'descriptionText': 			'[Description constructed from node data]',		
     				'showInstructionDuration': 	'infinite',			// Duration in ms that pane is shown on screen. 
     				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
@@ -1357,79 +1357,11 @@
     			'nodeShowButtonExplorer': {							// The entire system of influences
     				'instructionHeader': 		'Explore system impacts',
     				'instructionText': 			"",
-    				'descriptionHeader': 		'System consequences',
+    				'descriptionHeader': 		'Description',
     				'descriptionText': 			'[Description constructed from node data]',	
-    				'showInstructionDuration':  5000,				// Duration in ms that pane is shown on screen. 
-    				'showDescriptionDuration': 	10000			// 0 indicates that pane is not shown, 'infinite' === sticky		
+    				'showInstructionDuration':  'infinite',				// Duration in ms that pane is shown on screen. 
+    				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky		
     			},
-
-            ///// SINGLE LOOP EVENTS: For loops, each objects instruction/description are kept in sync /////
-			'loopShowMenu':{
-				'instructionHeader': 		'Choose a loop',
-				'instructionText': 			"Tap on a system loop name in the list below to arrange and highlight the loop's elements",
-				'descriptionHeader': 		"About feedback loops"  ,
-				'descriptionText': 			"",	
-				'showInstructionDuration': 	8000,				// Duration in ms that pane is shown on screen. 
-				'showDescriptionDuration': 'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky		
-			},
-			'loopShowIntroduction':{
-				'instructionHeader': 		'Explore the loop',
-				'instructionText': 			"Tap the center of the loop to learn more about the loop",
-				'descriptionHeader': 		"Elements in a loop"  ,
-				'descriptionText': 			"",  
-				'showInstructionDuration': 	5000,				// Duration in ms that pane is shown on screen. 
-				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky		
-			},
-            'loopShowElements':{
-                'instructionHeader':        'Explore loop behaviour',
-                'instructionText':          "Tap the center of the loop to learn more about this loops behaviour",
-                'descriptionHeader':        "Feedback",
-                'descriptionText':          "Feedback involve a series of linked elements that 'circle back' on themselves. This means that a change in any element in the loop will eventually influence itself,  causing either 'reinforcing or balancing' behavior.",  
-                'showInstructionDuration':  8000,               // Duration in ms that pane is shown on screen. 
-                'showDescriptionDuration':  'infinite'          // 0 indicates that pane is not shown, 'infinite' === sticky        
-            },
-			'loopShowBehaviour':{
-				'instructionHeader': 		'See more',
-				'instructionText': 			"Tap the center of the loop to read more about this loop",
-				'descriptionHeader': 		"[Header from data]"  ,
-				'descriptionText': 			"[Loop behavior from data].",	
-				'showInstructionDuration': 	5000,				// Duration in ms that pane is shown on screen. 
-				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky		
-			},
-			'loopShowDescription':{
-				'instructionHeader': 		'Explore other loops and views',
-				'instructionText': 			"Select another loop or system view to explore from the menu",
-				'descriptionHeader': 		"More",
-				'descriptionText': 			"[Loop description from data]",	
-				'showInstructionDuration': 	5000,				// Duration in ms that pane is shown on screen. 
-				'showDescriptionDuration': 	10000			// 0 indicates that pane is not shown, 'infinite' === sticky		
-			},			
-
-            ///// SCENARIO / MULTI-LOOP EVENTS: For scenarios, each objects instruction/description are kept in sync /////
-            'scenarioShowMenu':{
-                'instructionHeader':        'Choose a scenario',
-                'instructionText':          "Tap on a scenario from the list below to start exploring it's behaviour",
-                'descriptionHeader':        ""  ,
-                'descriptionText':          "", 
-                'showInstructionDuration':  8000,               // Duration in ms that pane is shown on screen. 
-                'showDescriptionDuration': 'infinite'           // 0 indicates that pane is not shown, 'infinite' === sticky        
-            },
-            'scenarioShowIntroduction':{
-                'instructionHeader':        'Explore scenario story',
-                'instructionText':          "Tap anywhere to learn about the behaviour of this part of the system",
-                'descriptionHeader':        "" ,
-                'descriptionText':          "", 
-                'showInstructionDuration':  8000,               // Duration in ms that pane is shown on screen. 
-                'showDescriptionDuration': 'infinite'           // 0 indicates that pane is not shown, 'infinite' === sticky        
-            },
-            'scenarioShowDescription':{
-                'instructionHeader':        'Explore other scenarios and views',
-                'instructionText':          "Tap anywhere to learn more about loop interaction behaviour",
-                'descriptionHeader':        "The story"  ,
-                'descriptionText':          "[Description from data]", 
-                'showInstructionDuration':  5000,               // Duration in ms that pane is shown on screen. 
-                'showDescriptionDuration':  10000               // 0 indicates that pane is not shown, 'infinite' === sticky        
-            },
 		}		
 
 	/// 1. SET OPENING / START VIEW: called on load 
@@ -1999,13 +1931,7 @@
                                                 }
                                             }())
 
-                                            // if(influenceData.linkIDX.length === 0){ // If there are no links
-                                            //     string = objectData.name+' does not have influencing links to the rest of the system and does not not impact on '+settings.centralNode+'.'
-                                            // } else if(isCentralImpaced){
-                                            //     string = 'The links between elements mean that an <span class = "description-highlight increase">increase (+)</span> or <span class = "description-highlight decrease">decrease (-)</span> in '+objectData.name+' has system-wide consequences which causes '+settings.centralNode+' to move in the '+centralImpactDirection+' direction.'
-                                            // } else{
-                                            //     string = 'The links between elements mean that an <span class = "description-highlight increase">increase (+)</span> or <span class = "description-highlight decrease">decrease (-)</span> in '+objectData.name+' has system consequences, however these do not impact on '+settings.centralNode+'.'
-                                            // }                   
+                              
                                             d3.select('#systemDescription-text').html(string)
                                     }; // end updateConsequenceDescription
                                 }
@@ -2247,18 +2173,9 @@
 
 					// 2. Show System impacts and description of node  increase / decrease buttons
 					} else if (eventName === 'nodeShowSystemImpacts'){
-						// let buttonDirection = (buttonUp) ? 'increase' : 'decrease',
-						//  	string = ''
-                        // if(influenceData.linkIDX.length === 0){ // If there are no links
-                        //     string = objectData.name+' does not have an influencing links to the rest of the system.'
-                        // } else{
-                        //     string = 'The links between elements mean that an <span class = "description-highlight increase">increase (+)</span> or <span class = "description-highlight decrease">decrease (-)</span> in '+objectData.name+' has system consequences.'
-                        // } 
-    					// d3.select('#systemDescription-text').html(string)
-                        // d3.select('#systemDescription-text').html(objectData.description)   
-                        d3.select('#systemDescription-container')         
-                            .transition().duration(500).delay(10000)
-                            .style('transform', 'translateY(25vh)')                            
+                        // d3.select('#systemDescription-container')         
+                        //     .transition().duration(500).delay(10000)
+                        //     .style('transform', 'translateY(25vh)')                            
 					
                     // 3. Loop behavior
 					} else if(eventName === 'loopShowBehaviour'){
