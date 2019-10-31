@@ -1325,7 +1325,7 @@
     			'nodeHighlight': {									// Hover event for desktops only
     				'instructionHeader': 		'Explore the system',
     				'instructionText': 			'Tap on any "element" (circle) to learn about it',	
-    				'descriptionHeader': 		'About',
+    				'descriptionHeader': 		'Description',
     				'descriptionText': 			'[Description loaded from system element from database]',					
     				'showInstructionDuration': 	'infinite',				// Duration in ms that pane is shown on screen. 
     				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
@@ -1341,7 +1341,7 @@
     			'nodeShowDescription': {
     				'instructionHeader': 		'Explore an element',
     				'instructionText': 			'Tap on any "element" (circle) to learn about it',	// Descriptions are for the previous event
-    				'descriptionHeader': 		'About',
+    				'descriptionHeader': 		'Description',
     				'descriptionText': 			'[Description loaded from system element from database]',								
     				'showInstructionDuration': 	'infinite',				// Duration in ms that pane is shown on screen. 
     				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
@@ -1349,7 +1349,7 @@
     			'nodeShowSystemImpacts': {									// The +/- buttons on the selected node
     				'instructionHeader': 		'Explore consequences',
     				'instructionText': 			"Tap the + and - buttons to see how increases / decreases in this variable affect the other connected variables",
-    				'descriptionHeader': 		'ABOUT',
+    				'descriptionHeader': 		'Description',
     				'descriptionText': 			'[Description constructed from node data]',		
     				'showInstructionDuration': 	'infinite',			// Duration in ms that pane is shown on screen. 
     				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
