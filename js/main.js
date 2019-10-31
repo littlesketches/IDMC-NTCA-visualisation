@@ -1348,11 +1348,11 @@
     			},
     			'nodeShowSystemImpacts': {									// The +/- buttons on the selected node
     				'instructionHeader': 		'Explore consequences',
-    				'instructionText': 			"Tap to explore how changes to this element influences others in the system",
+    				'instructionText': 			"Tap the + and - buttons to see how increases / decreases in this variable affect the other connected variables",
     				'descriptionHeader': 		'System consequences',
     				'descriptionText': 			'[Description constructed from node data]',		
-    				'showInstructionDuration': 	10000,			// Duration in ms that pane is shown on screen. 
-    				'showDescriptionDuration': 	10000			// 0 indicates that pane is not shown, 'infinite' === sticky	
+    				'showInstructionDuration': 	'infinite',			// Duration in ms that pane is shown on screen. 
+    				'showDescriptionDuration': 	'infinite'			// 0 indicates that pane is not shown, 'infinite' === sticky	
     			},
     			'nodeShowButtonExplorer': {							// The entire system of influences
     				'instructionHeader': 		'Explore system impacts',
@@ -1649,7 +1649,7 @@
 				function nodeHighlight(){
 					const nodeClassname = d3.select(this).node().classList[1]
 					focusNode(nodeClassname)										// Highlight the selected node
-					toggleInstructions('nodeShowDescription',)						// Show instructions
+					// toggleInstructions('nodeShowDescription',)						// Show instructions
                     toggleDescription('nodeShowDescription',)                      // Show instructions
 					updateEventOverlays('nodeHighlight', 'nodeShowSystemImpacts', this.__data__)		// Update the overlay text
 					
@@ -1976,7 +1976,7 @@
                                     d3.select('#instruction-text')
                                         .style('opacity', 0)
                                         .html("Tap the + and - buttons to see how increases / decreases in this variable affect the other connected variables")
-                                        .transition().duration(500)
+                                        .transition().duration(0)
                                         .style('opacity', 1)
 
                                     // Function to update the consequence narrative once the system impacts are detected and recorded
