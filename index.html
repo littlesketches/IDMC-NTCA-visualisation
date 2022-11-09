@@ -134,12 +134,18 @@
 
 		<!-- JAVASCRIPT DEPENDENCIES -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.2/tabletop.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsnetworkx/0.3.4/jsnetworkx.js"></script>
 		<script> // Visualisation specific dataset/link to Google Sheet template
-			const dataURL =  'https://docs.google.com/spreadsheets/d/1-48fEuMeohsTod1-c6Gu1vgouNivyzocDhrlBrbDRcQ/',	// Visualisiton specific dataset/link to Google Sheet template
-				  elementSelector = 'svg#vis',																			// Selector of HTML element to render visualisation to
-				  applyUserSettings = true																				// Use Google sheet 'settings' if true, and default settings if false
+            const dataURLs = {      // URLs from individual GSheet endpoints
+                    settings:       'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=1827891220&single=true&output=tsv',
+                    nodes:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=0&single=true&output=tsv',
+                    links:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=19339719&single=true&output=tsv',
+                    loops:          'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=1515175289&single=true&output=tsv',
+                    loopScenarios:  'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=2134429550&single=true&output=tsv',
+                    info:           'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSmbtF_egdet5mYVhluDUQG-Gsut1SPmBhjvviIrZZnBCI7R0Xv7DHYSl_GVdXJafp6-3TyqM083I_/pub?gid=2017495310&single=true&output=tsv'
+                },
+				 elementSelector = 'svg#vis',																			// Selector of HTML element to render visualisation to
+				 applyUserSettings = true																				// Use Google sheet 'settings' if true, and default settings if false
 		</script>
 		<script src="js/main.js"> //Path to main sloopsys.js library</script>																			
     </body>
