@@ -64,6 +64,11 @@
 
 	const G = new jsnx.DiGraph()			// JSNetworkX.js object: sets up a directional graph to calculate centrality measures (i.e. eigenvector and betweenness)	
 
+
+
+
+    
+
 	// Customisable Settings for System (node-link) Visualisation: overriding these settings (via Google Sheet / "API") can be done
     const settings = {	
     	'controlsVisible'		: false,					// Variable to set visibility of visualisation controls menu: initially "false" to show as hidden on load)
@@ -123,8 +128,9 @@
 ///////////////////////////////////////////////////////////////////////////
 
     // A. PARSE DATA to node-link structure for data visualisation and callback (to constructGraphData)
-    function parseData(nodes, connections, loops, info, loopScenarios, settings, callback){
-    	// 0. Store raw JSON data to variables f0or inspection
+    async function parseData(nodes, connections, loops, info, loopScenarios, settings, callback){
+console.log(loops) 
+   	// 0. Store raw JSON data to variables f0or inspection
     	rawData.nodeData = nodes; 
     	rawData.connectionData = connections, 
     	rawData.narrativeData = info, 	
@@ -397,7 +403,7 @@
 
 
 	// D. CONSTRUCT NODE DIRECTION DATA OBJECT for monitoring node direction when calculating system influences
-	function createNodeDirectionObj(nodeData){					
+	async function createNodeDirectionObj(nodeData){					
 		for(let i = 0; i < nodeData.length; i++){
 			visData.nodeDirectionObject['node_'+nodeData[i]['nodeID']] = {
 				'name'	: 		nodeData[i]['nodeName'],
@@ -1242,7 +1248,7 @@
 
 
     // H. RENDER ANNOTATION: renders text for headers etc. as defined from the Google Sheet     
-	function renderAnnotation(data){
+	async function renderAnnotation(data){
 		annotation = svg.append('g').attr('id', 'annotation-group')
 		annotation.append('text')
 			.attr('id', 'main-header')
@@ -1275,7 +1281,7 @@
 
 
 	// I. SVG "defs" for markers and filter effects (note: arrow marker in SVG defs only works with the line connector option)
-    function addSVGdefs(){
+    async function addSVGdefs(){
 		const defs = svg.append("defs")
 		defs.selectAll("marker")					// Arrow marker only applied to path stroke links
 		    .data(["arrow"])      					// Note: the use of a marker defined here can only be a applied at the start, middle or end of a path.
@@ -3318,7 +3324,7 @@
 ////////   OVERRIDE USER SETTINGS FROM GOOGLE SHEET SETTINGS    ///////////
 ///////////////////////////////////////////////////////////////////////////
 
-	function updateSettings(data){				
+	async function updateSettings(data){				
 		let settingsKeys = Object.keys(settings)
 		for(let i = 0; i < settingsKeys.length; i++){
 			for(let j = 0 ; j < data.length; j++){
@@ -3343,25 +3349,29 @@
 
 	// GET NETWORK DATA: pull the Google Sheets data onload (i.e. the initiation function)
 	// *** IMPORTANT: NODES AND LINK IDS ARE ASSUMED TO BE CONSECUTIVE NUMBERED STARTING FROM 1 (i.e. matching Kumu.io table output) ***
-    function renderFromGS(){
+   async function renderFromGS(){
         setStartView()
-		Tabletop.init(
-			{key: dataURL,
-			    callback: function(d){
-			    	// updateSettings(d.settings.elements)
-			    	parseData(d.nodes.elements, d.links.elements, d.loops.elements, d.info.elements, d.loopScenarios.elements,  d.settings.elements,			// Parse data to node-link layout format and text information (headers etc.)
-			    		function(){constructGraphData(rawData.nodeData, rawData.connectionData, 					// Includes callback to construct graphData after data is parsed
-			    			function(){renderVis(visData.networkData, 												// with another callback to Render vis to canvas using constructed network data
-			    				function(){createLoopData(rawData.loopData, rawData.loopScenario)}, 										// and final callback to process loop data
-			    				function(){showIntro()}																// show intro options
-			    			)}												
-			    		)
-			    	});									    							    																
-			    	renderAnnotation(rawData.narrativeData);														// Separate call to renderAnnotation (which only requires narrativeData to parse)
-			    	createNodeDirectionObj(rawData.nodeData)
-			    },		    
-			    simpleSheet: false,
-			    wanted: ['nodes', 'links', 'loops', 'info',  'loopScenarios', 'settings'] 							// Specifies which Google sheet to bring in (and in what order)
-		});
-    	addSVGdefs()																								// Add the defs element for filters and markers to the SVG element							
+
+        const d = {
+            settings:       await d3.tsv(dataURLs.settings),
+            nodes:          await d3.tsv(dataURLs.nodes),
+            links:          await d3.tsv(dataURLs.links),
+            loops:          await d3.tsv(dataURLs.loops),
+            loopScenarios:  await d3.tsv(dataURLs.loopScenarios),
+            info:           await d3.tsv(dataURLs.info)
+        }
+
+        await updateSettings(d.settings)
+        await parseData(d.nodes, d.links, d.loops, d.info, d.loopScenarios, d.settings,			// Parse data to node-link layout format and text information (headers etc.)
+            function(){constructGraphData(rawData.nodeData, rawData.connectionData, 					// Includes callback to construct graphData after data is parsed
+                function(){renderVis(visData.networkData, 												// with another callback to Render vis to canvas using constructed network data
+                    function(){createLoopData(rawData.loopData, rawData.loopScenario)}, 										// and final callback to process loop data
+                    function(){showIntro()}																// show intro options
+                )}												
+            )
+        });	
+
+        await renderAnnotation(rawData.narrativeData);														// Separate call to renderAnnotation (which only requires narrativeData to parse)
+        await createNodeDirectionObj(rawData.nodeData)
+    	await addSVGdefs()																								// Add the defs element for filters and markers to the SVG element							
 	} // end renderFromGS()
